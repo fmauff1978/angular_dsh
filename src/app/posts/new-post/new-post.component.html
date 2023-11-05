@@ -56,7 +56,8 @@
         <div class="form-group">
 
           <label for="">Postar imagem</label>
-          <input type="file" class="form-control">
+          <img [src]="imgSrc" class =" form-control img-fluid img-preview">
+          <input type="file" class="form-control" accept="image/*" (change)="showPreview($event)" >
 
 
         </div>

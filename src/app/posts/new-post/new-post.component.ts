@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-new-post',
@@ -8,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class NewPostComponent implements OnInit {
 
   permalink: string = " ";
+  imgSrc: any = "./assets/plax.jpg";
+  selectedImg : any;
 
-  constructor(){}
+  constructor(private cs: CategoriesService){}
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+    this.cs
 
   }
 
@@ -23,6 +28,18 @@ export class NewPostComponent implements OnInit {
 
     console.log(this.permalink)
 
+
+  }
+
+  showPreview($event){
+
+    const reader = new FileReader()
+
+    reader.onload = (e)=>{
+      this.imgSrc = e.target.result
+    }
+    reader.readAsDataURL($event.target.files[0]);
+    this.selectedImg = $event.target.files[0];
 
   }
 
