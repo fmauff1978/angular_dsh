@@ -28,7 +28,7 @@ categories$: Observable<Category[]>;
 
     async loadData(){
 
-           return this.fs.collection('categories', (ref) => 
+           await this.fs.collection('categories', (ref) => 
            ref.orderBy('criado_em', 'desc')).get().pipe(map((result)=>
             this.convertSnaps<Category>(result)));
 
@@ -45,9 +45,7 @@ categories$: Observable<Category[]>;
          return{
          id:snap.id,
          ...<any> snap.data()
- 
- 
- 
+  
       }
      })
       }

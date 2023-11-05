@@ -47,6 +47,7 @@
           <label for="">Selecione uma categoria</label>
           <select class="form-control">
             <option value="" disabled>Selecione </option>
+            <option *ngFor = "let cat of categories|async" value="">{{cat.category}}</option>
 
           </select>
 

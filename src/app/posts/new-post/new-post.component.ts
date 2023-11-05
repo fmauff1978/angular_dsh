@@ -1,4 +1,7 @@
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Component, OnInit } from '@angular/core';
+import { Observable, map } from 'rxjs';
+import { Category } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
@@ -11,14 +14,32 @@ export class NewPostComponent implements OnInit {
   permalink: string = " ";
   imgSrc: any = "./assets/plax.jpg";
   selectedImg : any;
+  categories: Observable <Category[]>;
 
-  constructor(private cs: CategoriesService){}
+  constructor(private fs: AngularFirestore){}
 
   ngOnInit() {
 
-    this.cs
+    this.categories =this.fs.collection('categories', (ref) => ref.orderBy('criado_em', 'desc')).get().pipe(map((result)=> this.convertSnaps<Category>(result)));
 
+    console.log(this.categories)
+    }
+
+  convertSnaps<T>(result){
+    return <T[]> result.docs.map(snap=>{
+      return{
+      id:snap.id,
+      ...<any> snap.data()
+
+
+
+   }
+   })
   }
+      
+      
+
+ 
 
   onTitleChanged($event){
 
