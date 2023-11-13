@@ -16,6 +16,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 
 @Component({
@@ -102,7 +103,7 @@ export class CategoriesComponent implements OnInit {
 
 
 
-        
+
 
 
         }

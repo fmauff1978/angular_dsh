@@ -22,6 +22,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 
+
+
+
+
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,18 +47,22 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFirestoreModule,
     FormsModule,
     BrowserAnimationsModule,
-
     HttpClientModule,
      AngularEditorModule,
      ReactiveFormsModule,
-
     ToastrModule.forRoot(),
     AppRoutingModule,
-   provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
+
+
+
   ],
-  providers: [ ],
+
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
 

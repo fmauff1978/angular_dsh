@@ -1,12 +1,10 @@
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Category } from 'src/app/models/category';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Post } from 'src/app/models/post';
-
-
 
 
 
@@ -30,7 +28,8 @@ export class NewPostComponent implements OnInit {
   iconUrl: string;
 
 
-  constructor(private fs: AngularFirestore, private fb: FormBuilder){
+
+constructor(private fs: AngularFirestore, private fb: FormBuilder ){
 
 
 this.postForm = this.fb.group({
@@ -94,7 +93,7 @@ this.postForm = this.fb.group({
       createdAt: new Date()
       }
 
-     
+
   }
 
 

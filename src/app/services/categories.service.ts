@@ -12,6 +12,7 @@ import {
 
 import { Category } from '../models/category';
 import { Observable, from } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Injectable({
   providedIn: 'root'
