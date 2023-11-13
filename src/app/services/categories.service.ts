@@ -18,38 +18,11 @@ import { Observable, from } from 'rxjs';
 })
 export class CategoriesService implements OnInit{
 
-categories$: Observable<Category[]>;
+
 
 
   constructor(private fs: AngularFirestore, private ts: ToastrService,
     ) { }
-
-
-
-    async loadData(){
-
-           await this.fs.collection('categories', (ref) => 
-           ref.orderBy('criado_em', 'desc')).get().pipe(map((result)=>
-            this.convertSnaps<Category>(result)));
-
-
-
-    //console.log(this.categories$)
-
-    }
-
-    convertSnaps<T>(results){
-
-
-       return <T[]> results.docs.map(snap=>{
-         return{
-         id:snap.id,
-         ...<any> snap.data()
-  
-      }
-     })
-      }
- 
 
   async saveData(data){
 

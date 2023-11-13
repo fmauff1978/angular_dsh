@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule} from '@angular/fire/compat';
 import { AngularFirestoreModule} from '@angular/fire/compat/firestore';
-
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
@@ -18,6 +17,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllPostComponent } from './posts/all-post/all-post.component';
 import { NewPostComponent } from './posts/new-post/new-post.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -36,12 +38,18 @@ import { NewPostComponent } from './posts/new-post/new-post.component';
     AngularFirestoreModule,
     FormsModule,
     BrowserAnimationsModule,
+
+    HttpClientModule,
+     AngularEditorModule,
+     ReactiveFormsModule,
+
     ToastrModule.forRoot(),
     AppRoutingModule,
-    //provideFirebaseApp(() => initializeApp(environment.firebase)),
+   provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

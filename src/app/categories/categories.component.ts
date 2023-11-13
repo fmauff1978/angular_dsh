@@ -39,8 +39,6 @@ export class CategoriesComponent implements OnInit {
 
    ngOnInit() {
 
-    
-
     this.categories$ =this.fs.collection('categories', (ref) => ref.orderBy('criado_em', 'desc')).get().pipe(map((result)=> this.convertSnaps<Category>(result)));
 
 
@@ -49,22 +47,23 @@ export class CategoriesComponent implements OnInit {
 
 
 
-     
+     // (await this.cs.loadData()).subscribe( val =>{
+         // console.log(val);
 
     }
 
     convertSnaps<T>(results){
 
 
-    return <T[]> results.docs.map(snap=>{
+      return <T[]> results.docs.map(snap=>{
         return{
-        id:snap.id,
-        ...<any> snap.data()
+          id:snap.id,
+          ...<any> snap.data()
 
 
 
      }
-     })
+      })
      }
 
 
