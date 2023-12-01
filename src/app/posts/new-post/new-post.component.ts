@@ -2,9 +2,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Component, OnInit, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Category } from 'src/app/models/category';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Post } from 'src/app/models/post';
+import { PostService } from 'src/app/services/post.service';
 
 
 
@@ -29,7 +29,7 @@ export class NewPostComponent implements OnInit {
 
 
 
-constructor(private fs: AngularFirestore, private fb: FormBuilder ){
+constructor(private fs: AngularFirestore, private fb: FormBuilder, private ps: PostService ){
 
 
 this.postForm = this.fb.group({
@@ -93,6 +93,10 @@ this.postForm = this.fb.group({
       createdAt: new Date()
       }
 
+      this.ps.uploadImage(this.selectedImg, postData)
+
+      this.postForm.reset();
+      this.imgSrc = "./assets/plax.jpg";
 
   }
 
@@ -122,6 +126,7 @@ this.postForm = this.fb.group({
     this.selectedImg = $event.target.files[0];
 
   }
+
 
 
 
